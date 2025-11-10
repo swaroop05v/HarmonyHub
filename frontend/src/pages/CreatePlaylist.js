@@ -1,60 +1,51 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import axios from "axios";
+import "./CreatePlaylist.css"; // ✅ new stylesheet
+import { useNavigate } from "react-router-dom";
 
 export default function CreatePlaylist() {
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
   const navigate = useNavigate();
 
-  const handleCreate = async (e) => {
+  const submit = async (e) => {
     e.preventDefault();
-
-    // ✅ Get token from localStorage
-    const token = localStorage.getItem('token');
-    if (!token) {
-      alert('You must log in first.');
-      navigate('/login');
-      return;
-    }
+    const token = localStorage.getItem("token");
 
     try {
-      const res = await axios.post(
-        'http://localhost:5000/api/playlists',
+      await axios.post(
+        "http://localhost:5000/api/playlists",
         { title, description },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,  // ✅ include token
-          },
-        }
+        { headers: { Authorization: `Bearer ${token}` } }
       );
 
-      console.log('✅ Playlist created:', res.data);
-      alert('Playlist created successfully!');
-      navigate('/dashboard');
+      alert("Playlist created!");
+      navigate("/dashboard");
     } catch (err) {
-      console.error('❌ Playlist creation failed:', err.response?.data || err.message);
-      alert(err.response?.data?.error || 'Failed to create playlist');
+      alert("Error creating playlist");
     }
   };
 
   return (
-    <div className="container">
-      <h2>Create Playlist</h2>
-      <form onSubmit={handleCreate}>
+    <div className="center-wrapper">
+      <form className="playlist-card" onSubmit={submit}>
+        <h2>Create Playlist</h2>
+
         <input
           type="text"
-          placeholder="Playlist title"
+          placeholder="Playlist Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           required
         />
+
         <textarea
           placeholder="Description (optional)"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-        <button type="submit">Create</button>
+
+        <button type="submit">Create Playlist</button>
       </form>
     </div>
   );
