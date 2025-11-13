@@ -27,7 +27,7 @@ export default function Dashboard() {
       const token = localStorage.getItem("token");
 
       await axios.delete(`http://localhost:5000/api/playlists/${id}`, {
-        headers: { Authorization: `Bearer ${token}` },  // ✅ FIX ADDED
+        headers: { Authorization: `Bearer ${token}` },
       });
 
       fetchPlaylists();
@@ -54,32 +54,46 @@ export default function Dashboard() {
           <p className="empty">No playlists yet. Create one!</p>
         ) : (
           <div className="playlist-grid">
-            {playlists.map((playlist) => (
-              <div key={playlist._id} className="playlist-card">
-                {/* ✅ name fix */}
-                <h3>{playlist.title || playlist.playlistName || playlist.name}</h3>
+            {playlists.map((playlist) => {
+              // Choose one clean name
+              const title =
+                playlist.title ||
+                playlist.playlistName ||
+                playlist.name ||
+                "Untitled Playlist";
 
-                {/* show description ONLY if available */}
-                {playlist.description && <p>{playlist.description}</p>}
-                <p className="song-count">🎶 {playlist.songs.length} songs</p>
+              return (
+                <div key={playlist._id} className="playlist-card">
+                  <h3 className="playlist-title">{title}</h3>
 
-                <div className="btn-flex">
-                  <button
-                    className="view-btn"
-                    onClick={() => navigate(`/playlist/${playlist._id}`)}
-                  >
-                    View
-                  </button>
+                  {/* show description ONLY if available */}
+                  {playlist.description && (
+                    <p className="playlist-desc">{playlist.description}</p>
+                  )}
 
-                  <button
-                    className="delete-btn"
-                    onClick={() => deletePlaylist(playlist._id)}
-                  >
-                    Delete
-                  </button>
+                  <p className="song-count">
+                    🎵 {playlist.songs?.length || 0}{" "}
+                    {playlist.songs?.length === 1 ? "song" : "songs"}
+                  </p>
+
+                  <div className="btn-flex">
+                    <button
+                      className="view-btn"
+                      onClick={() => navigate(`/playlist/${playlist._id}`)}
+                    >
+                      View
+                    </button>
+
+                    <button
+                      className="delete-btn"
+                      onClick={() => deletePlaylist(playlist._id)}
+                    >
+                      Delete
+                    </button>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         )}
       </div>

@@ -1,35 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Contact.css";
 
 export default function Contact() {
-  const [message, setMessage] = useState("");
-
-  const handleSend = () => {
-    if (!message.trim()) {
-      alert("Please enter a message");
-      return;
-    }
-
-    alert("✅ Message sent! (This is a demo — no backend yet)");
-    setMessage("");
-  };
-
   return (
     <div className="contact-container">
       <div className="contact-card">
-        <h2>📩 Contact / Feedback</h2>
-        <p>We'd love to hear your thoughts!</p>
+        <h2>📞 Contact Us</h2>
+        <p>We’d love to hear from you! Reach out to us through the following:</p>
 
-        <textarea
-          className="contact-input"
-          placeholder="Write your feedback or message here..."
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-        />
+        <div className="contact-details">
+          <p><strong>Email:</strong> harmonyhub.support@gmail.com</p>
+          <p><strong>Phone:</strong> +91 98765 43210</p>
+          <p><strong>Address:</strong> PES University, Bengaluru, India</p>
+        </div>
 
-        <button className="blue-btn" onClick={handleSend}>
-          Send
-        </button>
+        <div className="contact-note">
+          <p>We’ll get back to you as soon as possible. 💬</p>
+        </div>
       </div>
     </div>
   );

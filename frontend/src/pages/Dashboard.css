@@ -1,163 +1,172 @@
+/* 🎵 Dashboard Page — HarmonyHub */
+
+/* ===== Container ===== */
 .dashboard-container {
+  width: 100%;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding-top: 40px;
-  background: #f4f5fb;
+  padding: 50px 0 100px;
+  background: transparent; /* match your app background */
+  overflow-y: auto; /* ✅ enable scrolling */
 }
 
+/* ===== Main Card ===== */
 .dashboard-card {
-  width: 80%;
-  background: white;
-  padding: 32px;
-  border-radius: 14px;
+  width: 90%;
+  max-width: 1100px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 40px;
+  border-radius: 18px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  transition: all 0.3s ease;
 }
 
+/* ===== Title ===== */
 .dashboard-title {
-  font-size: 28px;
-  font-weight: bold;
+  font-size: 32px;
+  font-weight: 700;
+  color: #1b1b1b;
   margin-bottom: 25px;
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
+/* ===== Create Button ===== */
 .create-btn {
-  background: #007bff;
+  background: linear-gradient(135deg, #007bff, #0056b3);
   color: white;
-  padding: 10px 18px;
+  padding: 12px 22px;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   margin-bottom: 28px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  font-weight: 500;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 10px rgba(0, 123, 255, 0.3);
 }
 
 .create-btn:hover {
-  background: #005dc7;
+  background: linear-gradient(135deg, #0062cc, #004a9f);
+  transform: translateY(-2px);
 }
 
+/* ===== Playlist Grid ===== */
 .playlist-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 25px;
 }
 
+/* ===== Playlist Card ===== */
 .playlist-card {
+  flex: 1 1 calc(33.333% - 24px);
+  max-width: calc(33.333% - 24px);
+  min-width: 250px;
   background: #ffffff;
-  padding: 18px;
-  border-radius: 12px;
   border: 1px solid #e7e7e7;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 14px;
+  padding: 22px 18px;
+  text-align: left;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  position: relative;
+  color: #111;
 }
 
 .playlist-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
 }
 
-.song-count {
+/* ===== Playlist Header ===== */
+.playlist-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #111;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ===== Playlist Description ===== */
+.playlist-desc {
   font-size: 14px;
-  margin-top: 10px;
-  opacity: 0.7;
+  color: #555;
+  margin-bottom: 8px;
 }
 
+/* ===== Song Count ===== */
+.song-count {
+  font-size: 13px;
+  color: #777;
+  margin-top: 6px;
+}
+
+/* ===== Buttons (View + Delete) ===== */
 .btn-flex {
   display: flex;
-  margin-top: 1rem;
+  justify-content: space-between;
   gap: 10px;
+  margin-top: 16px;
 }
 
 .view-btn,
 .delete-btn {
   flex: 1;
   padding: 8px;
-  cursor: pointer;
   border-radius: 6px;
   border: none;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease;
 }
 
 .view-btn {
   background: #007bff;
-  color: white;
+  color: #fff;
+}
+
+.view-btn:hover {
+  background: #0056b3;
 }
 
 .delete-btn {
   background: #ff4d4f;
-  color: white;
-}
-
-.empty {
-  opacity: 0.7;
-  margin-top: 10px;
-}
-
-.playlist-title {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 6px;
-}
-
-.playlist-desc {
-  font-size: 14px;
-  color: #555;
-  margin-bottom: 10px;
-}
-
-.page-card {
-  background: white;
-  padding: 30px;
-  border-radius: 18px;
-  width: 90%;
-  margin: auto;
-  box-shadow: 0 8px 35px rgba(0, 0, 0, 0.12);
-}
-
-.dashboard-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 40px;
-}
-
-.dashboard-card {
-  width: 90%;
-  background: #ffffff;
-  padding: 32px;
-  border-radius: 18px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-}
-
-.playlist-card,
-.playlist-card h3,
-.playlist-desc,
-.song-count {
-  color: #111;          
-}
-
-.playlist-card h3 {
-  font-size: 18px;
-  font-weight: 600;
-  margin: 0 0 6px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* ✅ Red delete buttons */
-.delete-btn {
-  background: #ff4b4b;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 6px;
-  color: white;
-  cursor: pointer;
-  font-size: 14px;
-  transition: 0.25s ease;
+  color: #fff;
 }
 
 .delete-btn:hover {
   background: #d62828;
   transform: scale(1.05);
+}
+
+/* ===== Empty State ===== */
+.empty {
+  text-align: center;
+  color: #555;
+  font-size: 15px;
+  margin-top: 30px;
+  opacity: 0.8;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .playlist-card {
+    flex: 1 1 calc(50% - 24px);
+    max-width: calc(50% - 24px);
+  }
+}
+
+@media (max-width: 600px) {
+  .playlist-card {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
 }

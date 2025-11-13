@@ -13,6 +13,7 @@ import Team from './pages/Team';
 import ProtectedRoute from './components/ProtectedRoute';
 import './styles.css';
 
+// ✅ Navbar component inside same file
 function Navbar() {
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
@@ -49,6 +50,7 @@ function Navbar() {
   );
 }
 
+// ✅ Main App Component
 export default function App() {
   return (
     <BrowserRouter>

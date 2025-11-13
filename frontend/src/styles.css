@@ -6,13 +6,22 @@
   font-family: "Poppins", sans-serif;
 }
 
-/* ✅ GLOBAL BLUE LOGIN BACKGROUND FOR ALL PAGES */
-body,
-html {
-  height: 100%;
+/* ✅ GLOBAL BACKGROUND + SCROLL FIX */
+html,
+body {
+  min-height: 100vh; /* allows scrolling beyond screen height */
+  overflow-x: hidden;
+  overflow-y: auto; /* enables vertical scrolling */
   background: linear-gradient(135deg, #4c5fd7, #202542);
   background-attachment: fixed;
-  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* ✅ Ensure React root and container don’t block scroll */
+#root,
+.container {
+  min-height: 100vh;
+  overflow: visible;
 }
 
 /* ✅ NAVBAR */
@@ -56,7 +65,7 @@ html {
   padding-top: 40px;
 }
 
-/* ✅ GLOBAL GLASS CARD STYLE (used everywhere) */
+/* ✅ GLOBAL GLASS CARD STYLE */
 .page-card {
   background: rgba(255, 255, 255, 0.18);
   backdrop-filter: blur(18px);
@@ -101,23 +110,7 @@ html {
   transform: scale(1.05);
 }
 
-/* 🔴 LOGOUT BUTTON (navbar) */
-.logout-btn {
-  background: #ff4b4b;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 8px;
-  color: white;
-  cursor: pointer;
-  font-size: 14px;
-  transition: 0.3s ease;
-}
-
-.logout-btn:hover {
-  background: #d62828;
-}
-
-/* VIEW PLAYLIST PAGE */
+/* 🎵 VIEW PLAYLIST PAGE */
 .playlist-view-card {
   padding: 40px;
   width: 650px;
@@ -152,7 +145,7 @@ html {
   font-size: 16px;
 }
 
-/* Blue button */
+/* 🎵 Blue button */
 .add-btn {
   background: #0a84ff;
   color: white;
@@ -162,7 +155,7 @@ html {
   display: inline-block;
 }
 
-/* Page layout like login/dashboard */
+/* 🎵 Add Song Page Layout */
 .addsong-card {
   background: white;
   padding: 36px;
@@ -193,28 +186,7 @@ html {
   border: 1px solid #0a82ff;
 }
 
-.blue-btn {
-  background: #0a82ff;
-  padding: 12px;
-  color: white;
-  border-radius: 8px;
-  cursor: pointer;
-  border: none;
-  font-size: 16px;
-  transition: 0.25s;
-}
-
-.blue-btn:hover {
-  background: #0068d6;
-}
-/* --- Home Page Button Styling --- */
-.homepage-btn {
-  margin-top: 12px;
-  padding: 12px 22px;
-  font-size: 18px;
-}
-
-/* Blue button reusable styling */
+/* 🎨 Reusable Blue Button */
 .blue-btn {
   background: #0a82ff;
   color: white;
@@ -231,3 +203,9 @@ html {
   transform: translateY(-2px);
 }
 
+/* 🏠 Home Page Button */
+.homepage-btn {
+  margin-top: 12px;
+  padding: 12px 22px;
+  font-size: 18px;
+}

@@ -56,3 +56,17 @@
   background: #0056b3;
   transform: scale(1.05);
 }
+
+/* Contact page extra styling */
+.contact-details {
+  text-align: left;
+  margin-top: 20px;
+  line-height: 1.8;
+  font-size: 18px;
+}
+
+.contact-note {
+  margin-top: 30px;
+  font-style: italic;
+  color: #e0e0e0;
+}
