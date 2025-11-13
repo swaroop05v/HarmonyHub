@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import "./Contact.css"; // reuse same styles
+import "./Contact.css";
 
 export default function Feedback() {
   const [message, setMessage] = useState("");
 
   const handleSend = () => {
     if (!message.trim()) {
-      alert("Please enter your feedback!");
+      alert("⚠️ Please enter a message before sending.");
       return;
     }
 
-    alert("✅ Thank you for your feedback! (Demo only — not sent to backend)");
+    alert("✅ Feedback submitted! (This is a demo — no backend yet)");
     setMessage("");
   };
 
@@ -18,17 +18,17 @@ export default function Feedback() {
     <div className="contact-container">
       <div className="contact-card">
         <h2>💬 Feedback</h2>
-        <p>We value your thoughts and suggestions!</p>
+        <p>We’d love to know what you think about HarmonyHub!</p>
 
         <textarea
           className="contact-input"
-          placeholder="Write your feedback here..."
+          placeholder="Write your feedback or message here..."
           value={message}
           onChange={(e) => setMessage(e.target.value)}
         />
 
         <button className="blue-btn" onClick={handleSend}>
-          Send Feedback
+          Submit
         </button>
       </div>
     </div>
